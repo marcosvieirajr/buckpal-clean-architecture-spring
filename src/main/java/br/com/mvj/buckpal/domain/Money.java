@@ -11,7 +11,7 @@ public class Money {
     @NonNull
     private final BigDecimal amount;
 
-    public static Money ZERO = Money.of(0L);
+    public static final Money ZERO = Money.of(0L);
 
     public static Money of(long value) {
         return new Money(BigDecimal.valueOf(value));

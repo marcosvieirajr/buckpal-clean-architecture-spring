@@ -1,8 +1,6 @@
 package br.com.mvj.buckpal.domain;
 
-import lombok.NonNull;
 import org.junit.jupiter.api.Test;
-import br.com.mvj.buckpal.domain.Account.AccountId;
 
 import java.time.LocalDateTime;
 
@@ -12,8 +10,8 @@ public class AccountTest {
 
     @Test
     void dopositSucceeds() {
-        var accountId = new AccountId(1L);
-        var anotherAccount = new AccountId(2L);
+        var accountId = new Account.AccountId(1L);
+        var anotherAccount = new Account.AccountId(2L);
 
         var baselineBalance = Money.of(100L);
 
@@ -32,8 +30,8 @@ public class AccountTest {
 
     @Test
     void withdrawSucceeds() {
-        var accountId = new AccountId(1L);
-        var anotherAccount = new AccountId(2L);
+        var accountId = new Account.AccountId(1L);
+        var anotherAccount = new Account.AccountId(2L);
 
         var baselineBalance = Money.of(100L);
 
@@ -52,8 +50,8 @@ public class AccountTest {
 
     @Test
     void withdrawFail() {
-        var accountId = new AccountId(1L);
-        var anotherAccount = new AccountId(2L);
+        var accountId = new Account.AccountId(1L);
+        var anotherAccount = new Account.AccountId(2L);
 
         var baselineBalance = Money.of(100L);
 

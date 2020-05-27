@@ -1,11 +1,8 @@
 package br.com.mvj.buckpal.domain;
 
-import br.com.mvj.buckpal.domain.Account.AccountId;
-import lombok.NonNull;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
-import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,8 +14,8 @@ public class ActivityWindowTest {
         LocalDateTime startDateTime = LocalDateTime.of(2020, 05, 01, 12, 00);
         LocalDateTime endDateTime = LocalDateTime.of(2020, 05, 01, 12, 30);
 
-        var accountId = new AccountId(1L);
-        var anotherAccount = new AccountId(2L);
+        var accountId = new Account.AccountId(1L);
+        var anotherAccount = new Account.AccountId(2L);
         var activityWindow = new ActivityWindow(
             new Activity(accountId, anotherAccount, accountId, endDateTime, Money.of(100L)),
             new Activity(accountId, accountId, anotherAccount, startDateTime, Money.of(50L)),
@@ -35,8 +32,8 @@ public class ActivityWindowTest {
         LocalDateTime startDateTime = LocalDateTime.of(2020, 05, 01, 12, 00);
         LocalDateTime endDateTime = LocalDateTime.of(2020, 05, 01, 12, 30);
 
-        var accountId = new AccountId(1L);
-        var anotherAccount = new AccountId(2L);
+        var accountId = new Account.AccountId(1L);
+        var anotherAccount = new Account.AccountId(2L);
         var activityWindow = new ActivityWindow(
             new Activity(accountId, anotherAccount, accountId, endDateTime, Money.of(100L)),
             new Activity(accountId, accountId, anotherAccount, startDateTime, Money.of(50L)),

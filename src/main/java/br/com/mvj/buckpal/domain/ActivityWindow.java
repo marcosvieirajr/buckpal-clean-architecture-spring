@@ -1,12 +1,9 @@
 package br.com.mvj.buckpal.domain;
 
-import br.com.mvj.buckpal.domain.Account.AccountId;
 import lombok.NonNull;
-import lombok.Value;
 
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collector;
 
 public class ActivityWindow {
 
@@ -26,7 +23,7 @@ public class ActivityWindow {
             .getTimestamp();
     }
 
-    public Money calculateBalance(AccountId accountId){
+    public Money calculateBalance(Account.AccountId accountId){
         var depositBalance = this.activities.stream()
             .filter(activity -> activity.getTargetAccountId().equals(accountId))
             .map(Activity::getMoney)
@@ -37,7 +34,6 @@ public class ActivityWindow {
             .map(Activity::getMoney)
             .reduce(Money.ZERO, Money::add);
 
-//        return Money.add(depositBalance, withdrawalBalance.negate());
         return Money.subtract(depositBalance, withdrawBalance);
     }
 
