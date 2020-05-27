@@ -42,7 +42,7 @@ public class ActivityWindow {
     }
 
     public ActivityWindow (@NonNull Activity... activities) {
-        this.activities = new ArrayList<>(Arrays.asList(activities));
+        this.activities = new ArrayList<>(List.of(activities));
     }
 
     public List<Activity> getActivities() {
