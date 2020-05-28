@@ -3,6 +3,7 @@ package br.com.mvj.buckpal.application.port.in;
 import br.com.mvj.buckpal.domain.Account.AccountId;
 import br.com.mvj.buckpal.domain.Money;
 import br.com.mvj.shared.SelfValidating;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import javax.validation.constraints.NotNull;
@@ -13,6 +14,7 @@ public interface SendMoneyUseCase {
     boolean execute(SendMoneyCommand command);
 
     @Getter
+    @EqualsAndHashCode
     class SendMoneyCommand extends SelfValidating<SendMoneyCommand> {
 
         @NotNull private final AccountId sourceAccountId;

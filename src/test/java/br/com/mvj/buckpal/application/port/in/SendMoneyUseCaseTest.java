@@ -42,13 +42,13 @@ public class SendMoneyUseCaseTest {
                 null,
                 new Account.AccountId(2L),
                 Money.of(100L))
-            ).withMessage("sourceAccountId: não deve ser nulo");
+            ).withMessageStartingWith("sourceAccountId:");
 
         assertThatExceptionOfType(ConstraintViolationException.class)
             .isThrownBy(() -> new SendMoneyUseCase.SendMoneyCommand(
                 new Account.AccountId(2L),
                 null,
                 Money.of(100L))
-            ).withMessage("targetAccountId: não deve ser nulo");
+            ).withMessageStartingWith("targetAccountId:");
     }
 }
