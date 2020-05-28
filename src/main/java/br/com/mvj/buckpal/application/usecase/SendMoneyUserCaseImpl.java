@@ -1,22 +1,23 @@
 package br.com.mvj.buckpal.application.usecase;
 
-import br.com.mvj.buckpal.application.port.in.SendMoneyUserCase;
+import br.com.mvj.buckpal.application.port.in.SendMoneyUseCase;
 import br.com.mvj.buckpal.application.port.out.AccountLockPort;
 import br.com.mvj.buckpal.application.port.out.LoadAccountPort;
 import br.com.mvj.buckpal.application.port.out.UpdateAccountStatePort;
 import lombok.RequiredArgsConstructor;
 
+import javax.inject.Named;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 
-// TODO: create @UseCase annotation...
+@Named // TODO: create @UseCase annotation...
 @Transactional
 @RequiredArgsConstructor
-public class SendMoneyUserCaseImpl implements SendMoneyUserCase {
+public class SendMoneyUserCaseImpl implements SendMoneyUseCase {
 
-    private final LoadAccountPort loadAccountPort;
-    private final AccountLockPort accountLockPort;
-    private final UpdateAccountStatePort updateAccountStatePort;
+    private final LoadAccountPort loadAccount;
+    private final AccountLockPort accountLock;
+    private final UpdateAccountStatePort updateAccountState;
     private final MoneyTransferProperties moneyTransferProperties;
 
     @Override
@@ -25,39 +26,39 @@ public class SendMoneyUserCaseImpl implements SendMoneyUserCase {
         checkThreshold(command);
 
         var baselineDate = LocalDateTime.now().minusDays(10);
-        var sourceAccount = loadAccountPort.loadAccount(command.getSourceAccountId(), baselineDate)
-            .orElseThrow(() -> new IllegalArgumentException("expected source account ID not to be empty"));
+        var sourceAccount = loadAccount.loadAccount(command.getSourceAccountId(), baselineDate)
+            .orElseThrow(() -> new IllegalArgumentException("expected source account exists"));
 
-        var targetAccount = loadAccountPort.loadAccount(command.getTargetAccountId(), baselineDate)
-            .orElseThrow(() -> new IllegalArgumentException("expected source account ID not to be empty"));
+        var targetAccount = loadAccount.loadAccount(command.getTargetAccountId(), baselineDate)
+            .orElseThrow(() -> new IllegalArgumentException("expected source account exists"));
 
         var sourceAccountId = sourceAccount.getId().get();
         var targetAccountId = targetAccount.getId().get();
 
-        accountLockPort.lockAccount(sourceAccountId);
+        accountLock.lockAccount(sourceAccountId);
         if(!sourceAccount.withdraw(command.getMoney(), targetAccountId)){
-            accountLockPort.releaseAccount(sourceAccountId);
+            accountLock.releaseAccount(sourceAccountId);
             return false;
         }
 
-        accountLockPort.lockAccount(targetAccountId);
+        accountLock.lockAccount(targetAccountId);
         if(!targetAccount.deposit(command.getMoney(), sourceAccountId)) {
-            accountLockPort.releaseAccount(sourceAccountId);
-            accountLockPort.releaseAccount(targetAccountId);
+            accountLock.releaseAccount(sourceAccountId);
+            accountLock.releaseAccount(targetAccountId);
             return false;
         }
 
-        updateAccountStatePort.updateActivities(sourceAccount);
-        updateAccountStatePort.updateActivities(targetAccount);
+        updateAccountState.updateActivities(sourceAccount);
+        updateAccountState.updateActivities(targetAccount);
 
-        accountLockPort.releaseAccount(sourceAccountId);
-        accountLockPort.releaseAccount(targetAccountId);
+        accountLock.releaseAccount(sourceAccountId);
+        accountLock.releaseAccount(targetAccountId);
         return true;
     }
 
     private void checkThreshold(SendMoneyCommand command) {
         var threshold = moneyTransferProperties.getMaximumTransferThreshol();
         if(command.getMoney().isGreaterThan(threshold))
-            throw new ThresholdExceededException(command.getMoney(), threshold);
+            throw new ThresholdExceededException(threshold, command.getMoney());
     }
 }

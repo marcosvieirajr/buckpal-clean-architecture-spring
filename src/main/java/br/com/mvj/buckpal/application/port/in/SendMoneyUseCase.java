@@ -8,7 +8,7 @@ import lombok.Getter;
 import javax.validation.constraints.NotNull;
 import java.security.InvalidParameterException;
 
-public interface SendMoneyUserCase {
+public interface SendMoneyUseCase {
 
     boolean execute(SendMoneyCommand command);
 
