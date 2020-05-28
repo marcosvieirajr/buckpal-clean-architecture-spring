@@ -4,12 +4,13 @@ import br.com.mvj.buckpal.application.port.in.GetAccountBalanceQuery;
 import br.com.mvj.buckpal.application.port.out.LoadAccountPort;
 import br.com.mvj.buckpal.domain.Account;
 import br.com.mvj.buckpal.domain.Money;
+import br.com.mvj.shared.stereotypes.UseCase;
 import lombok.RequiredArgsConstructor;
 
 import javax.inject.Named;
 import java.time.LocalDateTime;
 
-@Named // TODO: create @UseCase annotation...
+@UseCase
 @RequiredArgsConstructor
 public class GetAccountBalanceQueryImpl implements GetAccountBalanceQuery {
 

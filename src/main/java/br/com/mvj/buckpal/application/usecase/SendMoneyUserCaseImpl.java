@@ -4,13 +4,14 @@ import br.com.mvj.buckpal.application.port.in.SendMoneyUseCase;
 import br.com.mvj.buckpal.application.port.out.AccountLockPort;
 import br.com.mvj.buckpal.application.port.out.LoadAccountPort;
 import br.com.mvj.buckpal.application.port.out.UpdateAccountStatePort;
+import br.com.mvj.shared.stereotypes.UseCase;
 import lombok.RequiredArgsConstructor;
 
 import javax.inject.Named;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 
-@Named // TODO: create @UseCase annotation...
+@UseCase
 @Transactional
 @RequiredArgsConstructor
 public class SendMoneyUserCaseImpl implements SendMoneyUseCase {
