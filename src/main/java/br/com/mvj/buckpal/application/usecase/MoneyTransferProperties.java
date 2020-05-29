@@ -5,5 +5,5 @@ import lombok.Getter;
 
 @Getter
 public class MoneyTransferProperties {
-    private Money maximumTransferThreshol = Money.of(1_000_000L);
+    private Money maximumTransferThreshold = Money.of(1_000_000L);
 }

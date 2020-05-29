@@ -7,7 +7,6 @@ import br.com.mvj.buckpal.application.port.out.UpdateAccountStatePort;
 import br.com.mvj.shared.stereotypes.UseCase;
 import lombok.RequiredArgsConstructor;
 
-import javax.inject.Named;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 
@@ -19,7 +18,7 @@ public class SendMoneyUserCaseImpl implements SendMoneyUseCase {
     private final LoadAccountPort loadAccount;
     private final AccountLockPort accountLock;
     private final UpdateAccountStatePort updateAccountState;
-    private final MoneyTransferProperties moneyTransferProperties;
+    private MoneyTransferProperties moneyTransferProperties = new MoneyTransferProperties();
 
     @Override
     public boolean execute(SendMoneyCommand command) {
@@ -58,7 +57,7 @@ public class SendMoneyUserCaseImpl implements SendMoneyUseCase {
     }
 
     private void checkThreshold(SendMoneyCommand command) {
-        var threshold = moneyTransferProperties.getMaximumTransferThreshol();
+        var threshold = moneyTransferProperties.getMaximumTransferThreshold();
         if(command.getMoney().isGreaterThan(threshold))
             throw new ThresholdExceededException(threshold, command.getMoney());
     }

@@ -1,11 +1,11 @@
 package br.com.mvj.buckpal.domain;
 
-import lombok.NonNull;
-import lombok.Value;
+import lombok.*;
 
 import java.math.BigDecimal;
 
-@Value
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@EqualsAndHashCode
 public class Money {
 
     @NonNull
@@ -55,5 +55,9 @@ public class Money {
 
     public Money negate() {
         return new Money(amount.negate());
+    }
+
+    public BigDecimal getAmount() {
+        return this.amount;
     }
 }

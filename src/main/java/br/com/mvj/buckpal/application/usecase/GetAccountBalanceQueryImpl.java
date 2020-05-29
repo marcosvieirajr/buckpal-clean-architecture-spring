@@ -7,7 +7,6 @@ import br.com.mvj.buckpal.domain.Money;
 import br.com.mvj.shared.stereotypes.UseCase;
 import lombok.RequiredArgsConstructor;
 
-import javax.inject.Named;
 import java.time.LocalDateTime;
 
 @UseCase
@@ -19,7 +18,7 @@ public class GetAccountBalanceQueryImpl implements GetAccountBalanceQuery {
     @Override
     public Money execute(Account.AccountId accountId) {
         return loadAccount.loadAccount(accountId, LocalDateTime.now())
-            .orElseThrow(() -> new RuntimeException("xxx")) // TODO: change exception
+            .orElseThrow(() -> new RuntimeException("xxx")) // TODO: change exception message
             .calculateBalance();
     }
 }

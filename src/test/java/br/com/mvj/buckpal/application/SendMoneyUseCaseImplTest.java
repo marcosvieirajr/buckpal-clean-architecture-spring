@@ -32,7 +32,7 @@ public class SendMoneyUseCaseImplTest {
     final UpdateAccountStatePort updateAccountStatePort = mock(UpdateAccountStatePort.class);
 
     final SendMoneyUseCase sendMoneyUseCase =
-        new SendMoneyUserCaseImpl(loadAccountPort, accountLockPort, updateAccountStatePort, moneyTransferProperties());
+        new SendMoneyUserCaseImpl(loadAccountPort, accountLockPort, updateAccountStatePort);
 
     final SendMoneyCommand sendMoneyCommand = mock(SendMoneyCommand.class);
 
@@ -203,9 +203,5 @@ public class SendMoneyUseCaseImplTest {
             .thenReturn(Optional.of(account));
 
         return account;
-    }
-
-    private MoneyTransferProperties moneyTransferProperties() {
-        return new MoneyTransferProperties();
     }
 }

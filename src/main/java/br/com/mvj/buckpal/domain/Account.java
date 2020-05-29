@@ -1,9 +1,6 @@
 package br.com.mvj.buckpal.domain;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Value;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -57,8 +54,9 @@ public class Account {
     }
 
     @Value
+    @RequiredArgsConstructor
     public static class AccountId {
-        private Long value;
+        private final Long value;
     }
 
 }
