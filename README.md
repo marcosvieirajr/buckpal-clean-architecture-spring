@@ -28,7 +28,7 @@ An example approach for implementating a Clean/Hexagonal Architecture based the 
 - [x] web api adapters (use input ports)
     - [x] integration tests
     - [x] exception handlers
-    - [ ] spring data paginator
+    - [ ] spring data pagination & sort
     - [ ] spring hateoas
     - [ ] swagger
 - [x] persistence adapters (implements output ports)
