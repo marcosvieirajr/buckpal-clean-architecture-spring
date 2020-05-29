@@ -1,0 +1,25 @@
+# run docker-compose -f stack.yml up
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres:12-alpine
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=secret
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+#  adminer:
+#    image: adminer:4-standalone
+#    restart: always
+#    ports:
+#      - 8080:8080
+
+volumes:
+  postgres-data:
+
