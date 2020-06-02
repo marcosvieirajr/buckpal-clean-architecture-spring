@@ -48,6 +48,7 @@ An example approach for implementating a Clean/Hexagonal Architecture based the 
         - [ ] cloud security - security configuration
 - [ ] docker-compose stack
     - [x] postgres
+    - [x] mongo
     - [ ] redis
 - [ ] ci / cd
 
