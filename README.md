@@ -37,7 +37,7 @@ An example approach for implementating a Clean/Hexagonal Architecture based the 
     - [ ] integration tests
 - [ ] system tests (end to end)
 - [ ] redis cache
-- [ ] split in multi modules
+- [x] split in multi modules
 - [ ] split in microservices
     - [ ] spring cloud NETFLIX OSS
         - [ ] netflix EUREKA - service discovery
@@ -51,9 +51,3 @@ An example approach for implementating a Clean/Hexagonal Architecture based the 
     - [x] mongo
     - [ ] redis
 - [ ] ci / cd
-
-
-
-
-
-
