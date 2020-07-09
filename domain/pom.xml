@@ -26,6 +26,9 @@
         <junit-jupiter.version>5.6.2</junit-jupiter.version>
         <assertj.version>3.16.1</assertj.version>
         
+            <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+    <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
         <jacoco.version>0.8.5</jacoco.version>
     </properties>
 

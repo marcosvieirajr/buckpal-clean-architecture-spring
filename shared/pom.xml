@@ -30,6 +30,9 @@
         <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
         <javax.el.version>3.0.0</javax.el.version>
         
+            <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+    <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
         <jacoco.version>0.8.5</jacoco.version>
     </properties>
 

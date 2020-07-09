@@ -28,6 +28,10 @@
         <assertj.version>3.16.1</assertj.version>
         
         <jacoco.version>0.8.5</jacoco.version>
+        
+            <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+    <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
     </properties>
 
     <dependencies>

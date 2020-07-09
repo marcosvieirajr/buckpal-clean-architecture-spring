@@ -19,16 +19,12 @@
 <!--        <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>-->
 <!--        <modelmapper.version>2.3.0</modelmapper.version>-->
 
-    <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-    <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
     
     <jacoco.version>0.8.5</jacoco.version>
     
     <code.coverage.exclusions>
-        **/com/wkrzywiec/medium/noticeboard/controller/dto/**,
-        **/com/wkrzywiec/medium/noticeboard/entity/**,
-        **/com/wkrzywiec/medium/noticeboard/Application.java
+        **/br/com/mvj/buckpal/application/port/**,
+        **/br/com/mvj/buckpal/BuckpalApp.java
     </code.coverage.exclusions>
     </properties>
 
