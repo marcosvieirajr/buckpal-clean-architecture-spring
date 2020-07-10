@@ -4,12 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-<!--    <parent>-->
-<!--        <artifactId>buckpal</artifactId>-->
-<!--        <groupId>br.com.mvj</groupId>-->
-<!--        <version>0.0.1</version>-->
-<!--    </parent>-->
-
     <groupId>br.com.mvj</groupId>
     <artifactId>shared</artifactId>
     <version>0.0.1</version>
@@ -20,20 +14,19 @@
         <java.version>11</java.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <!--        <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>-->
-        <!--        <modelmapper.version>2.3.0</modelmapper.version>-->
-<!--        <lombok.version>1.18.12</lombok.version>-->
-<!--        <junit-jupiter.version>5.6.2</junit-jupiter.version>-->
-<!--        <assertj.version>3.16.1</assertj.version>-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- dependencies -->
         <javax.inject.version>1</javax.inject.version>
         <javax.validation.version>2.0.1.Final</javax.validation.version>
         <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
         <javax.el.version>3.0.0</javax.el.version>
-        
-            <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-    <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+        <!-- tests-->
+
+        <!-- plugins-->
         <jacoco.version>0.8.5</jacoco.version>
+
+        <sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
     </properties>
 
     <dependencies>

@@ -15,17 +15,10 @@
         <java.version>11</java.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-<!--        <assertj.version>3.16.1</assertj.version>-->
-<!--        <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>-->
-<!--        <modelmapper.version>2.3.0</modelmapper.version>-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    
-    <jacoco.version>0.8.5</jacoco.version>
-    
-    <code.coverage.exclusions>
-        **/br/com/mvj/buckpal/application/port/**,
-        **/br/com/mvj/buckpal/BuckpalApp.java
-    </code.coverage.exclusions>
+        <!-- plugins-->
+        <jacoco.version>0.8.5</jacoco.version>
     </properties>
 
     <modules>
@@ -36,98 +29,18 @@
     </modules>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-web</artifactId>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.modelmapper</groupId>-->
-<!--            <artifactId>modelmapper</artifactId>-->
-<!--            <version>${modelmapper.version}</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.flywaydb</groupId>-->
-<!--            <artifactId>flyway-core</artifactId>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>javax.validation</groupId>-->
-<!--            <artifactId>validation-api</artifactId>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.hibernate.validator</groupId>-->
-<!--            <artifactId>hibernate-validator</artifactId>-->
-<!--            <version>${hibernate-validator.version}</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-devtools</artifactId>-->
-<!--            <scope>runtime</scope>-->
-<!--            <optional>true</optional>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.postgresql</groupId>-->
-<!--            <artifactId>postgresql</artifactId>-->
-<!--            <scope>runtime</scope>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.projectlombok</groupId>-->
-<!--            <artifactId>lombok</artifactId>-->
-<!--            <optional>true</optional>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-test</artifactId>-->
-<!--            <scope>test</scope>-->
-<!--            <exclusions>-->
-<!--                <exclusion>-->
-<!--                    <groupId>org.junit.vintage</groupId>-->
-<!--                    <artifactId>junit-vintage-engine</artifactId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.assertj</groupId>-->
-<!--            <artifactId>assertj-core</artifactId>-->
-<!--            <version>${assertj.version}</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.7.0.1746</version>
-            </plugin>
-        </plugins>
-    </build>
-    
     <profiles>
         <profile>
             <id>sonar</id>
             <properties>
-<!--                 <sonar.sources>.</sonar.sources> -->
-<!--                 <sonar.inclusions>src/main/java/**,src/main/resources/**</sonar.inclusions> -->
-<!--                 <sonar.exclusions>${code.coverage.exclusions}</sonar.exclusions> -->
-<!--                 <sonar.projectKey>br.com.mvj:buckpal</sonar.projectKey> -->
-<!--                 <sonar.organization>marcosvieirajr</sonar.organization> -->
                 <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-<!--                 <sonar.tests>${tests.dir}</sonar.tests> -->
+                <sonar.organization>marcosvieirajr</sonar.organization>
+                <sonar.projectKey>br.com.mvj:buckpal</sonar.projectKey>
+                <sonar.exclusions>**/*.xml</sonar.exclusions>
+                <sonar.junit.reportPaths>${project.basedir}/**/target/surefire-reports/**</sonar.junit.reportPaths>
+                <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/**/target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
             </properties>
             <activation>
                 <activeByDefault>false</activeByDefault>
@@ -151,5 +64,6 @@
             </build>
         </profile>
     </profiles>
+
 
 </project>
