@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/marcosvieirajr/buckpal-clean-architecture-spring.svg?style=svg)](https://circleci.com/gh/marcosvieirajr/buckpal-clean-architecture-spring)
+![Java CI with Maven](https://github.com/marcosvieirajr/buckpal-clean-architecture-spring/workflows/Java%20CI%20with%20Maven/badge.svg)
 
 # Buckpal
 
