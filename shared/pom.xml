@@ -19,7 +19,7 @@
         <!-- dependencies -->
         <javax.inject.version>1</javax.inject.version>
         <javax.validation.version>2.0.1.Final</javax.validation.version>
-        <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
+        <hibernate-validator.version>6.2.0.Final</hibernate-validator.version>
         <javax.el.version>3.0.0</javax.el.version>
         <!-- tests-->
 
